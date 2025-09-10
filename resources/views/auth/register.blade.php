@@ -5,9 +5,11 @@
 @section('contenido')
     <div class="flex items-center justify-center my-15 px-3">
         <div class="w-full max-w-md">
-            <h1 class="text-center text-2xl font-bold mb-6">Regístrate</h1>
+            <h1 class="text-center text-2xl font-bold mb-1">Regístrate</h1>
+            <p class="text-sm text-gray-600 text-center mb-6">Por favor, ingresa tus datos para crear tu cuenta.</p>
 
-            <form class="w-full">
+            <form class="w-full" action="{{ route('register.store') }}" method="POST">
+                @csrf
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label for="name" class="block mb-2 font-medium text-sm">
@@ -19,6 +21,7 @@
                             type="text"
                             placeholder="correo@correo.com"
                             class="w-full text-sm border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 @error('name') border-red-500 @enderror"
+                            value="{{ old('name') }}"
                         />
                         @error('name')
                             <p class="text-sm text-red-600">{{ $message }}</p>
@@ -32,8 +35,9 @@
                         <input 
                             id="last_name" 
                             name="last_name"
-                            type="password"
-                            placeholder="******"
+                            type="name"
+                            placeholder="San Julio"
+                            value="{{ old('last_name') }}"
                             class="w-full text-sm border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 @error('last_name') border-red-500 @enderror"
                         />
                         @error('last_name')
@@ -50,7 +54,8 @@
                             id="dni"
                             name="dni"
                             type="text"
-                            placeholder="correo@correo.com"
+                            placeholder="60606060"
+                            value="{{ old('dni') }}"
                             class="w-full text-sm border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 @error('dni') border-red-500 @enderror"
                         />
                         @error('dni')
@@ -66,7 +71,8 @@
                             id="phone" 
                             name="phone"
                             type="tel"
-                            placeholder="******"
+                            placeholder="987654321"
+                            value="{{ old('phone') }}"
                             class="w-full text-sm border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 @error('phone') border-red-500 @enderror"
                         />
                         @error('phone')
@@ -84,6 +90,7 @@
                         name="email"
                         type="text"
                         placeholder="correo@correo.com"
+                        value="{{ old('email') }}"
                         class="w-full text-sm border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 @error('email') border-red-500 @enderror"
                     />
                     @error('email')
@@ -91,35 +98,33 @@
                     @enderror
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label for="password" class="block mb-2 font-medium text-sm">
-                            Contraseña
-                        </label>
-                        <input 
-                            id="password" 
-                            name="password"
-                            type="password"
-                            placeholder="******"
-                            class="w-full text-sm border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 @error('email') border-red-500 @enderror"
-                        />
-                        @error('password')
-                            <p class="text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-    
-                    <div class="mb-3">
-                        <label for="password_confirmation" class="block mb-2 font-medium text-sm">
-                            Confirmar Contraseña
-                        </label>
-                        <input 
-                            id="password_confirmation" 
-                            name="password_confirmation"
-                            type="password"
-                            placeholder="******"
-                            class="w-full text-sm border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                        />
-                    </div>
+                <div class="mb-3">
+                    <label for="password" class="block mb-2 font-medium text-sm">
+                        Contraseña
+                    </label>
+                    <input 
+                        id="password" 
+                        name="password"
+                        type="password"
+                        placeholder="******"
+                        class="w-full text-sm border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 @error('email') border-red-500 @enderror"
+                    />
+                    @error('password')
+                        <p class="text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="password_confirmation" class="block mb-2 font-medium text-sm">
+                        Confirmar Contraseña
+                    </label>
+                    <input 
+                        id="password_confirmation" 
+                        name="password_confirmation"
+                        type="password"
+                        placeholder="******"
+                        class="w-full text-sm border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    />
                 </div>
 
                 <div class="flex flex-col md:flex-row">

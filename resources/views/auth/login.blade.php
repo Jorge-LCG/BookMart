@@ -5,9 +5,21 @@
 @section('contenido')
     <div class="flex items-center justify-center my-15 px-3">
         <div class="w-full max-w-md">
-            <h1 class="text-center text-2xl font-bold mb-6">Iniciar Sesión</h1>
+            <h1 class="text-center text-2xl font-bold">Iniciar Sesión</h1>
 
-            <form class="w-full">
+            <form class="w-full mt-4" action="{{ route('login.store') }}" method="POST">
+                @csrf
+                @if (session('mensaje'))
+                    <p id="message" class="bg-red-500 text-white mb-3 rounded-lg text-sm p-2 text-center">{{ session('mensaje') }}</p>
+                    <script>
+                        setTimeout(() => {
+                            const message = document.getElementById('message');
+                            if (message) {
+                                message.remove();
+                            }
+                        }, 2000);
+                    </script>
+                @endif
                 <div class="mb-5">
                     <label for="email" class="block mb-2 font-medium text-sm">
                         Correo electrónico
