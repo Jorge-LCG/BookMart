@@ -5,7 +5,7 @@
         <a href="" class="text-sm font-medium border-b border-gray-800 text-gray-800 hover:text-orange-400 hover:border-orange-400 transition-colors duration-300">Descubrir Ahora</a>
     </div>
     <img 
-        src="https://m.media-amazon.com/images/I/51E2055ZGUL._SL1000_.jpg" 
+        src="https://isbn.bnp.gob.pe/files/titulos/160765.jpg" 
         alt="imagen libro" 
         class="h-30"
     >

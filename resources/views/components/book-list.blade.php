@@ -2,7 +2,7 @@
     <div class="w-40 md:w-48 bg-white rounded-lg shadow group relative">
         <div class="relative">
             <img 
-                src="https://m.media-amazon.com/images/I/51E2055ZGUL._SL1000_.jpg" 
+                src="https://isbn.bnp.gob.pe/files/titulos/160765.jpg" 
                 alt="Spy x Family"
                 class="w-full rounded-t-lg"
             >
@@ -13,7 +13,7 @@
 
         <div class="p-2 text-center space-y-1.5">
             <p class="text-sm text-gray-700 truncate">
-                YuMe Spy x Family Squish Hero (m…)
+                Manual del docente in..
             </p>
             <span class="text-orange-600 font-bold">S/ 23.92</span>
         </div>
