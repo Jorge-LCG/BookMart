@@ -1,13 +1,33 @@
+@php
+    $links = [
+        [
+            'nombre' => 'Inicio',
+            'ruta' => ''
+        ],
+        [
+            'nombre' => 'Nuestros Libros',
+            'ruta' => ''
+        ],
+        [
+            'nombre' => 'Sobre Nosotros',
+            'ruta' => ''
+        ],
+        [
+            'nombre' => 'Contáctanos',
+            'ruta' => ''
+        ],
+    ];
+@endphp
+
 <div class="container mx-auto mt-4 flex justify-between items-center mb-4 px-4">
     <h1 class="font-extrabold text-3xl">
         Book-<span class="text-orange-400">Mart</span>
     </h1>
 
     <nav class="hidden md:flex gap-6 font-medium text-gray-700">
-        <a href="#" class="hover:text-orange-500 transition-colors duration-300">Inicio</a>
-        <a href="#" class="hover:text-orange-500 transition-colors duration-300">Nuestros Libros</a>
-        <a href="#" class="hover:text-orange-500 transition-colors duration-300">Sobre Nosotros</a>
-        <a href="#" class="hover:text-orange-500 transition-colors duration-300">Contáctanos</a>
+        @foreach ($links as $link)
+            <a href="{{ $link['ruta'] }}" class="hover:text-orange-500 transition-colors duration-300">{{ $link['nombre'] }}</a>  
+        @endforeach
     </nav>
 
     <div class="flex items-center gap-2">
@@ -40,10 +60,9 @@
 
 <div id="mobile-menu" class="hidden md:hidden mb-3">
     <nav class="flex flex-col gap-3 bg-gray-50 p-4 mt-2 shadow">
-        <a href="#" class="hover:text-orange-500 hover:font-medium transition-colors duration-300">Inicio</a>
-        <a href="#" class="hover:text-orange-500 hover:font-medium transition-colors duration-300">Nuestros Libros</a>
-        <a href="#" class="hover:text-orange-500 hover:font-medium transition-colors duration-300">Sobre Nosotros</a>
-        <a href="#" class="hover:text-orange-500 hover:font-medium transition-colors duration-300">Contáctanos</a>
+        @foreach ($links as $link)
+            <a href="{{ $link['ruta'] }}" class="hover:text-orange-500 transition-colors duration-300">{{ $link['nombre'] }}</a>  
+        @endforeach
     </nav>
 </div>
 
