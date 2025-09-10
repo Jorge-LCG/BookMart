@@ -2,31 +2,35 @@
     $links = [
         [
             'nombre' => 'Inicio',
-            'ruta' => ''
+            'ruta' => route('bookmart'),
+            'activo' => request()->routeIs('bookmart')
         ],
         [
             'nombre' => 'Nuestros Libros',
-            'ruta' => ''
+            'ruta' => '',
+            'activo' => request()->routeIs('')
         ],
         [
             'nombre' => 'Sobre Nosotros',
-            'ruta' => ''
+            'ruta' => '',
+            'activo' => request()->routeIs('')
         ],
         [
             'nombre' => 'Contáctanos',
-            'ruta' => ''
+            'ruta' => '',
+            'activo' => request()->routeIs('')
         ],
     ];
 @endphp
 
 <div class="container mx-auto mt-4 flex justify-between items-center mb-4 px-4">
-    <h1 class="font-extrabold text-3xl">
+    <a href="{{ route('bookmart') }}" class="font-extrabold text-3xl">
         Book-<span class="text-orange-400">Mart</span>
-    </h1>
+    </a>
 
     <nav class="hidden md:flex gap-6 font-medium text-gray-700">
         @foreach ($links as $link)
-            <a href="{{ $link['ruta'] }}" class="hover:text-orange-500 transition-colors duration-300">{{ $link['nombre'] }}</a>  
+            <a href="{{ $link['ruta'] }}" class="hover:text-orange-500 transition-colors duration-300 {{ $link['activo'] ? "text-orange-500 font-semibold" : "" }}">{{ $link['nombre'] }}</a>  
         @endforeach
     </nav>
 
@@ -61,7 +65,7 @@
 <div id="mobile-menu" class="hidden md:hidden mb-3">
     <nav class="flex flex-col gap-3 bg-gray-50 p-4 mt-2 shadow">
         @foreach ($links as $link)
-            <a href="{{ $link['ruta'] }}" class="hover:text-orange-500 transition-colors duration-300">{{ $link['nombre'] }}</a>  
+            <a href="{{ $link['ruta'] }}" class="hover:text-orange-500 transition-colors duration-300 {{ $link['activo'] ? "text-orange-500 font-semibold" : "" }}">{{ $link['nombre'] }}</a>  
         @endforeach
     </nav>
 </div>
