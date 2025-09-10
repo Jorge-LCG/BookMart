@@ -22,27 +22,55 @@
             </p>
         </div>
     
-        <div class="flex text-sm p-4 items-center">
-            <a href="#" class="flex gap-1.5 items-center cursor-pointer group">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F7941D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-users group-hover:stroke-orange-500 transition-colors duration-200">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-                    <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                    <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
-                </svg>
-                <span class="mr-2 text-gray-700 group-hover:text-gray-900 group-hover:font-medium transition-all duration-200">Mi Cuenta</span>
-            </a>
-            
-            <a href="{{ route('login') }}" class="flex gap-1.5 items-center cursor-pointer group">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F7941D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-login-2 ml-2 group-hover:stroke-orange-500 transition-colors duration-200">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M9 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2" />
-                    <path d="M3 12h13l-3 -3" />
-                    <path d="M13 15l3 -3" />
-                </svg>
-                <span class="text-gray-700 group-hover:text-gray-900 group-hover:font-medium transition-all duration-200">Iniciar Sesión</span>
-            </a>
+        <div class="flex text-sm p-4 items-center"> 
+            @auth
+                <a href="{{ route('perfil') }}" class="flex gap-1.5 items-center cursor-pointer group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F7941D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-users group-hover:stroke-orange-500 transition-colors duration-200">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+                        <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
+                    </svg>
+                    <span class="mr-2 text-gray-700 group-hover:text-gray-900 group-hover:font-medium transition-all duration-200">{{ Auth::user()->name }}</span>
+                </a>
+                
+                <form action="{{ route('logout.store') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="flex gap-1.5 items-center cursor-pointer group">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F7941D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-login-2 ml-2 group-hover:stroke-orange-500 transition-colors duration-200">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M9 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2" />
+                            <path d="M3 12h13l-3 -3" />
+                            <path d="M13 15l3 -3" />
+                        </svg>
+                        <span class="text-gray-700 group-hover:text-gray-900 group-hover:font-medium transition-all duration-200">Cerrar Sesión</span>
+                    </button>
+                </form>
+            @endauth
+
+            @guest
+                <a href="{{ route('login') }}" class="flex gap-1.5 items-center cursor-pointer group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F7941D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-users group-hover:stroke-orange-500 transition-colors duration-200">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+                        <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
+                    </svg>
+                    <span class="mr-2 text-gray-700 group-hover:text-gray-900 group-hover:font-medium transition-all duration-200">Mi Cuenta</span>
+                </a>
+                
+                <a href="{{ route('login') }}" class="flex gap-1.5 items-center cursor-pointer group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F7941D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-login-2 ml-2 group-hover:stroke-orange-500 transition-colors duration-200">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M9 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2" />
+                        <path d="M3 12h13l-3 -3" />
+                        <path d="M13 15l3 -3" />
+                    </svg>
+                    <span class="text-gray-700 group-hover:text-gray-900 group-hover:font-medium transition-all duration-200">Iniciar Sesión</span>
+                </a>
+            @endguest
         </div>
     </div>
 </section>

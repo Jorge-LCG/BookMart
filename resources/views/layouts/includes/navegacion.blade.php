@@ -7,18 +7,18 @@
         ],
         [
             'nombre' => 'Nuestros Libros',
-            'ruta' => '',
-            'activo' => request()->routeIs('')
+            'ruta' => route('homebook'),
+            'activo' => request()->routeIs('homebook')
         ],
         [
             'nombre' => 'Sobre Nosotros',
-            'ruta' => '',
-            'activo' => request()->routeIs('')
+            'ruta' => route('homeabout'),
+            'activo' => request()->routeIs('homeabout')
         ],
         [
             'nombre' => 'Contáctanos',
-            'ruta' => '',
-            'activo' => request()->routeIs('')
+            'ruta' => route('homecontact'),
+            'activo' => request()->routeIs('homecontact')
         ],
     ];
 @endphp
