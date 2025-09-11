@@ -28,12 +28,12 @@
                             <button class="cursor-pointer bg-orange-400 hover:bg-orange-500 text-white px-5 py-2 rounded-md font-semibold transition-colors duration-300">
                                 AÑADIR AL CARRITO
                             </button>
-                            <input type="number" value="1" min="1" 
+                            <input type="number" value="1" min="1" max="5"
                                 class="w-16 border rounded-md p-2 text-center">
                         </div>
 
                         <div class="mt-4 flex flex-col gap-2 text-blue-900 text-sm font-medium">
-                            <a href="#" class="hover:underline">Añadir comentario</a>
+                            {{-- <a href="#" class="hover:underline">Añadir comentario</a> --}}
                             <a href="#" class="hover:underline">Compartir</a>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
             <div class="max-w-4xl px-6 mt-10">
                 <div class="flex gap-4 border-b border-gray-400 pb-2">
                     <a href="" class="text-blue-900 font-semibold hover:text-blue-700 transition-colors duration-300 text-xl">Más Informacion</a>
-                    <a href="" class="text-gray-900 font-semibold hover:text-gray-700 transition-colors duration-300 text-xl">Comentarios</a>
+                    {{-- <a href="" class="text-gray-900 font-semibold hover:text-gray-700 transition-colors duration-300 text-xl">Comentarios</a> --}}
                 </div>
 
                 <div class="mt-5">
