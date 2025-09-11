@@ -47,6 +47,7 @@ Route::post('/cerrar-sesion', [LogoutController::class, 'store'])->name('logout.
 Route::middleware('auth')->group(function () {
     // Perfil Usuario
     Route::get('/bookmart/perfil', [PerfilController::class, 'index'])->name('perfil');
+    Route::put('/bookmart/perfil/actualizar', [UserController::class, 'update'])->name('user.update');
     Route::get('/bookmart/perfil/informacion', [UserController::class, 'index'])->name('user.index');
 
     Route::get('/bookmart/perfil/mis-libros', [BookController::class, 'index'])->name('book.index');

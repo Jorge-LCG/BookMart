@@ -11,9 +11,20 @@
                 Ingresa los datos que desees actualizar para mantener tu perfil al día.
             </p>
 
-            <form class="w-full" action="" method="POST">
+            <form class="w-full" action="{{ route('user.update') }}" method="POST">
                 @csrf
                 @method('PUT')
+                @if (session('mensaje'))
+                    <p id="message" class="bg-green-500 text-white mb-3 rounded-lg text-sm p-2 text-center">{{ session('mensaje') }}</p>
+                    <script>
+                        setTimeout(() => {
+                            const message = document.getElementById('message');
+                            if (message) {
+                                message.remove();
+                            }
+                        }, 3000);
+                    </script>
+                @endif
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label for="name" class="block mb-2 font-medium text-sm">
@@ -105,7 +116,7 @@
 
                 <button 
                     type="submit" 
-                    class="mt-6 text-sm font-medium shadow w-full bg-orange-500 text-white py-2.5 rounded-lg hover:bg-orange-600 transition-colors duration-300"
+                    class="cursor-pointer mt-6 text-sm font-medium shadow w-full bg-orange-500 text-white py-2.5 rounded-lg hover:bg-orange-600 transition-colors duration-300"
                 >
                     Guardar cambios
                 </button>
