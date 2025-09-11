@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\PasswordController;
+use App\Http\Controllers\Auth\RecoverPasswordController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ClaimsBookController;
 use App\Http\Controllers\HomeAboutController;
@@ -36,6 +37,9 @@ Route::post('/registrar-cuenta', [RegisterController::class, 'store'])->name('re
 
 Route::get('/recuperar-contraseña', [PasswordController::class, 'index'])->name('password');
 Route::post('/recuperar-contraseña', [PasswordController::class, 'store'])->name('password.store');
+
+Route::get('/recuperar-contraseña/codigo', [RecoverPasswordController::class, 'index'])->name('password.recover.index');
+Route::post('/recuperar-contraseña/codigo', [RecoverPasswordController::class, 'store'])->name('password.recover.store');
 
 Route::post('/cerrar-sesion', [LogoutController::class, 'store'])->name('logout.store');
 

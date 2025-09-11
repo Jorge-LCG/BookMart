@@ -8,7 +8,19 @@
             <h1 class="text-center text-2xl font-bold mb-2">Olvidaste tu contraseña?</h1>
             <p class="text-sm text-gray-600 text-center mb-6">Por favor, ingrese su dirección de correo electrónico para recibir el código de verificación.</p>
 
-            <form class="w-full">
+            <form class="w-full" action="{{ route('password.store') }}" method="POST">
+                @csrf
+                @if (session('mensaje'))
+                    <p id="message" class="bg-green-500 text-white mb-3 rounded-lg text-sm p-2 text-center">{{ session('mensaje') }}</p>
+                    <script>
+                        setTimeout(() => {
+                            const message = document.getElementById('message');
+                            if (message) {
+                                message.remove();
+                            }
+                        }, 3000);
+                    </script>
+                @endif
                 <div class="mb-3">
                     <label for="email" class="block mb-2 font-medium text-sm">
                         Correo electrónico
