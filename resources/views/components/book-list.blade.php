@@ -1,5 +1,5 @@
 <div class="container mx-auto flex flex-wrap justify-center gap-4">
-    <div class="w-40 md:w-48 bg-white rounded-lg shadow group relative">
+    <a href="{{ route('bookmart.book') }}" class="w-40 md:w-48 bg-white rounded-lg shadow group relative">
         <div class="relative">
             <img 
                 src="https://isbn.bnp.gob.pe/files/titulos/160765.jpg" 
@@ -17,5 +17,5 @@
             </p>
             <span class="text-orange-600 font-bold">S/ 23.92</span>
         </div>
-    </div>
+    </a>
 </div>

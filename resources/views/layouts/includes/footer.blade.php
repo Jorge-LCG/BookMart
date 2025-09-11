@@ -53,7 +53,8 @@
         <span class="text-sm text-white sm:text-center">
             © {{ now()->year }} 
             <a href="" class="hover:underline text-orange-400">Book-Mart™</a>. 
-            Todos los derechos reservados.
+            Desarrollado por 
+            <span class="text-orange-400">Matt Innova Solution E.I.R.L.</span>
         </span>
     </div>
 </div>

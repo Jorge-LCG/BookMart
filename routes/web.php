@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeAboutController;
 use App\Http\Controllers\HomeBookController;
 use App\Http\Controllers\HomeContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InformationBookController;
 use App\Http\Controllers\User\BookController;
 use App\Http\Controllers\User\PerfilController;
 use App\Http\Controllers\User\UserController;
@@ -21,6 +22,8 @@ Route::get('/sobre-nosotros', HomeAboutController::class)->name('homeabout');
 
 Route::get('/contactanos', [HomeContactController::class, 'index'])->name('homecontact');
 Route::post('/contactanos', [HomeContactController::class, 'store'])->name('homecontact.store');
+
+Route::get('/nombreLibro', [InformationBookController::class, 'index'])->name('bookmart.book');
 
 // Registro y Iniciar Sesión
 Route::get('/iniciar-sesión', [LoginController::class, 'index'])->name('login');
