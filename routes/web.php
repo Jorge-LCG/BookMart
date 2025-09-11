@@ -16,9 +16,8 @@ use App\Http\Controllers\User\PerfilController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/libro-reclamaciones', [ClaimsBookController::class, 'index'])->name('claims.index');
-Route::post('/libro-reclamaciones', [ClaimsBookController::class, 'store'])->name('claims.store');
-// Navegación Página
+
+// RUTAS PUBLICAS
 Route::get('/', HomeController::class)->name('bookmart');
 Route::get('/nuestros-libros', HomeBookController::class)->name('homebook');
 Route::get('/sobre-nosotros', HomeAboutController::class)->name('homeabout');
@@ -26,9 +25,12 @@ Route::get('/sobre-nosotros', HomeAboutController::class)->name('homeabout');
 Route::get('/contactanos', [HomeContactController::class, 'index'])->name('homecontact');
 Route::post('/contactanos', [HomeContactController::class, 'store'])->name('homecontact.store');
 
+Route::get('/libro-reclamaciones', [ClaimsBookController::class, 'index'])->name('claims.index');
+Route::post('/libro-reclamaciones', [ClaimsBookController::class, 'store'])->name('claims.store');
+
 Route::get('/nombreLibro', [InformationBookController::class, 'index'])->name('bookmart.book');
 
-// Registro y Iniciar Sesión
+// RUTAS DE AUTENTICACION
 Route::get('/iniciar-sesión', [LoginController::class, 'index'])->name('login');
 Route::post('/iniciar-sesión', [LoginController::class, 'store'])->name('login.store');
 
@@ -43,12 +45,13 @@ Route::post('/recuperar-contraseña/codigo', [RecoverPasswordController::class, 
 
 Route::post('/cerrar-sesion', [LogoutController::class, 'store'])->name('logout.store');
 
-// User Autenticado
-Route::middleware('auth')->group(function () {
-    // Perfil Usuario
-    Route::get('/bookmart/perfil', [PerfilController::class, 'index'])->name('perfil');
-    Route::put('/bookmart/perfil/actualizar', [UserController::class, 'update'])->name('user.update');
-    Route::get('/bookmart/perfil/informacion', [UserController::class, 'index'])->name('user.index');
+// ZONA AUTENTICADA
+Route::middleware('auth')->prefix('bookmart')->group(function () {
+    // PERFIL
+    Route::get('/perfil', [PerfilController::class, 'index'])->name('perfil');
+    Route::put('/perfil/actualizar', [UserController::class, 'update'])->name('user.update');
+    Route::get('/perfil/informacion', [UserController::class, 'index'])->name('user.index');
 
-    Route::get('/bookmart/perfil/mis-libros', [BookController::class, 'index'])->name('book.index');
+    // LIBRO DEL USUARIO
+    Route::get('/perfil/mis-libros', [BookController::class, 'index'])->name('book.index');
 });
