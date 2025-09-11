@@ -5,12 +5,14 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\RecoverPasswordController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ClaimsBookController;
 use App\Http\Controllers\HomeAboutController;
 use App\Http\Controllers\HomeBookController;
 use App\Http\Controllers\HomeContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InformationBookController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\User\BookController;
 use App\Http\Controllers\User\PerfilController;
 use App\Http\Controllers\User\UserController;
@@ -28,7 +30,7 @@ Route::post('/contactanos', [HomeContactController::class, 'store'])->name('home
 Route::get('/libro-reclamaciones', [ClaimsBookController::class, 'index'])->name('claims.index');
 Route::post('/libro-reclamaciones', [ClaimsBookController::class, 'store'])->name('claims.store');
 
-Route::get('/nombreLibro', [InformationBookController::class, 'index'])->name('bookmart.book');
+Route::get('/libro/{book}', [InformationBookController::class, 'show'])->name('bookmart.book');
 
 // RUTAS DE AUTENTICACION
 Route::get('/iniciar-sesión', [LoginController::class, 'index'])->name('login');
@@ -47,11 +49,22 @@ Route::post('/cerrar-sesion', [LogoutController::class, 'store'])->name('logout.
 
 // ZONA AUTENTICADA
 Route::middleware('auth')->prefix('bookmart')->group(function () {
-    // PERFIL
-    Route::get('/perfil', [PerfilController::class, 'index'])->name('perfil');
-    Route::put('/perfil/actualizar', [UserController::class, 'update'])->name('user.update');
-    Route::get('/perfil/informacion', [UserController::class, 'index'])->name('user.index');
+    // PERFIL USUARIO
+    Route::get('/bookmart/perfil', [PerfilController::class, 'index'])->name('perfil');
+    Route::get('/bookmart/perfil/informacion', [UserController::class, 'index'])->name('user.index');
 
-    // LIBRO DEL USUARIO
-    Route::get('/perfil/mis-libros', [BookController::class, 'index'])->name('book.index');
+    Route::get('/bookmart/perfil/mis-libros', [BookController::class, 'index'])->name('book.index');
+    Route::get('/bookmart/perfil/mis-libros/{book}', [BookController::class, 'show'])->name('user.books.show');
+    
+    // RUTAS CARRITO DE COMPRAS
+    Route::get('/carrito', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/carrito/agregar/{book}', [CartController::class, 'add'])->name('cart.add');
+    Route::put('/carrito/actualizar/{id}', [CartController::class, 'update'])->name('cart.update');
+    Route::delete('/carrito/eliminar/{id}', [CartController::class, 'remove'])->name('cart.remove');
+    Route::get('/carrito/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+    Route::post('/carrito/procesar-pedido', [CartController::class, 'processCheckout'])->name('cart.process');
+
+    // RUTAS ORDENES - PEDIDOS
+    Route::get('/mis-pedidos', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/mis-pedidos/{order}', [OrderController::class, 'show'])->name('orders.show');
 });
