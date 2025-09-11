@@ -20,6 +20,18 @@
                         }, 2000);
                     </script>
                 @endif
+
+                @if (session('mensaje_correcto'))
+                    <p id="message" class="bg-green-500 text-white mb-3 rounded-lg text-sm p-2 text-center">{{ session('mensaje_correcto') }}</p>
+                    <script>
+                        setTimeout(() => {
+                            const mensaje_correcto = document.getElementById('message');
+                            if (mensaje_correcto) {
+                                mensaje_correcto.remove();
+                            }
+                        }, 2000);
+                    </script>
+                @endif
                 <div class="mb-5">
                     <label for="email" class="block mb-2 font-medium text-sm">
                         Correo electrónico

@@ -6,6 +6,8 @@
 </head>
 <body>
     <h1>Recupera tu Contraseña</h1>
-    <a href="{{ route('password.recover.index') }}">Da click aquí</a>
+    <a href="{{ route('password.recover.index', ['token' => $data['token'], 'email' => $data['email']]) }}">
+        Da click aquí para recuperar tu contraseña
+    </a>
 </body>
 </html>

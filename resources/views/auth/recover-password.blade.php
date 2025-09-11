@@ -10,6 +10,9 @@
 
             <form class="w-full" action="" method="POST">
                 @csrf
+                <input type="hidden" name="token" value="{{ $token }}">
+                <input type="hidden" name="email" value="{{ $email }}">
+                
                 <div class="mb-3">
                     <label for="password" class="block mb-2 font-medium text-sm">
                         Contraseña
