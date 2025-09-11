@@ -2,12 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Mail\ContactMailRequest;
+use App\Mail\ContactMail;
+use App\Models\Contacts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class HomeContactController extends Controller
 {
-    public function __invoke()
+    public function index()
     {
         return view('contact');
+    }
+    
+    public function store(ContactMailRequest $request)
+    {
+        $data = $request->validated();
+
+        Contacts::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'message' => $request->message
+        ]);
+
+        Mail::to('prueba@prueba.com')->send(new ContactMail);
+        
+        return back()->with('mensaje', 'Mensaje enviado correctamente');
     }
 }
