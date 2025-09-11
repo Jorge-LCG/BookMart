@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ClaimsBookController;
 use App\Http\Controllers\HomeAboutController;
 use App\Http\Controllers\HomeBookController;
 use App\Http\Controllers\HomeContactController;
@@ -14,7 +15,8 @@ use App\Http\Controllers\User\PerfilController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
-
+Route::get('/libro-reclamaciones', [ClaimsBookController::class, 'index'])->name('claims.index');
+Route::post('/libro-reclamaciones', [ClaimsBookController::class, 'store'])->name('claims.store');
 // Navegación Página
 Route::get('/', HomeController::class)->name('bookmart');
 Route::get('/nuestros-libros', HomeBookController::class)->name('homebook');

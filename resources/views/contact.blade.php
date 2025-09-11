@@ -10,7 +10,7 @@
 
             <form class="w-full" action="{{ route('homecontact.store') }}" method="POST">
                 @csrf
-                 @if (session('mensaje'))
+                @if (session('mensaje'))
                     <p id="message" class="bg-green-500 text-white mb-3 rounded-lg text-sm p-2 text-center">{{ session('mensaje') }}</p>
                     <script>
                         setTimeout(() => {

@@ -11,16 +11,16 @@
                 <h2 class="mb-6 text-sm font-semibold text-white uppercase">Enlaces rápidos</h2>
                 <ul class="text-gray-500 font-medium">
                     <li class="mb-4">
-                        <a href="#" class="hover:underline hover:text-orange-400 transition-colors duration-100 text-white text-sm">Inicio</a>
+                        <a href="{{ route('bookmart') }}" class="hover:underline hover:text-orange-400 transition-colors duration-100 text-white text-sm">Inicio</a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="hover:underline hover:text-orange-400 transition-colors duration-100 text-white text-sm">Nuestro Libros</a>
+                        <a href="{{ route('homebook') }}" class="hover:underline hover:text-orange-400 transition-colors duration-100 text-white text-sm">Nuestro Libros</a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="hover:underline hover:text-orange-400 transition-colors duration-100 text-white text-sm">Sobre Nosotros</a>
+                        <a href="{{ route('homeabout') }}" class="hover:underline hover:text-orange-400 transition-colors duration-100 text-white text-sm">Sobre Nosotros</a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="hover:underline hover:text-orange-400 transition-colors duration-100 text-white text-sm">Contáctanos</a>
+                        <a href="{{ route('homecontact') }}" class="hover:underline hover:text-orange-400 transition-colors duration-100 text-white text-sm">Contáctanos</a>
                     </li>
                 </ul>
             </div>
@@ -28,10 +28,10 @@
                 <h2 class="mb-6 text-sm font-semibold text-white uppercase">Enlaces populares</h2>
                 <ul class="text-gray-500 font-medium">
                     <li class="mb-4">
-                        <a href="#" class="hover:underline hover:text-orange-400 transition-colors duration-100 text-white text-sm">Nuestro Libros</a>
+                        <a href="{{ route('homebook') }}" class="hover:underline hover:text-orange-400 transition-colors duration-100 text-white text-sm">Nuestro Libros</a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="hover:underline hover:text-orange-400 transition-colors duration-100 text-white text-sm">Contáctanos</a>
+                        <a href="{{ route('homecontact') }}" class="hover:underline hover:text-orange-400 transition-colors duration-100 text-white text-sm">Contáctanos</a>
                     </li>
                 </ul>
             </div>
@@ -42,7 +42,7 @@
                         <a href="#" class="hover:underline hover:text-orange-400 transition-colors duration-100 text-white text-sm">support@bookmart.com</a>
                     </li>
                     <li>
-                        <a href="#" class="hover:underline hover:text-orange-400 transition-colors duration-100 text-white text-sm">Libro de reclamaciones</a>
+                        <a href="{{ route('claims.index') }}" class="hover:underline hover:text-orange-400 transition-colors duration-100 text-white text-sm">Libro de reclamaciones</a>
                     </li>
                 </ul>
             </div>
@@ -52,9 +52,9 @@
     <div class="sm:flex sm:items-center sm:justify-center">
         <span class="text-sm text-white sm:text-center">
             © {{ now()->year }} 
-            <a href="" class="hover:underline text-orange-400">Book-Mart™</a>. 
+            <a href="{{ route('bookmart') }}" class="hover:underline text-orange-400">Book-Mart™</a>. 
             Desarrollado por 
-            <span class="text-orange-400">Matt Innova Solution E.I.R.L.</span>
+            <a href="https://www.mattinnovasolution.com/" class="text-orange-400 hover:underline" target="_blank">Matt Innova Solution E.I.R.L.</a>
         </span>
     </div>
 </div>
